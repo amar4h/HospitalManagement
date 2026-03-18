@@ -1,0 +1,46 @@
+# Hospital Management System - Apache Configuration
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Deny access to data directory (security)
+RewriteRule ^data/ - [F,L]
+
+# Deny access to config files
+RewriteRule ^config/ - [F,L]
+
+# Deny access to class files
+RewriteRule ^classes/ - [F,L]
+
+# Deny access to includes
+RewriteRule ^includes/ - [F,L]
+
+# Allow only index.php and assets
+RewriteCond %{REQUEST_URI} !^/index\.php
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/uploads/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(json|log|sql|bak)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# PHP Settings (if allowed)
+<IfModule mod_php.c>
+    php_value session.cookie_httponly 1
+    php_value session.use_only_cookies 1
+</IfModule>
