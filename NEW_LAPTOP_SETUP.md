@@ -2,7 +2,32 @@
 
 Complete migration guide for setting up the development workspace on a new laptop.
 
-## 1. Software to Install
+## 1. VS Code Extensions
+
+Run all these commands after installing VS Code:
+
+```bash
+code --install-extension anthropic.claude-code
+code --install-extension github.copilot-chat
+code --install-extension openai.chatgpt
+code --install-extension marp-team.marp-vscode
+code --install-extension ms-azuretools.vscode-azurefunctions
+code --install-extension ms-azuretools.vscode-azureresourcegroups
+code --install-extension ms-azuretools.vscode-azurestaticwebapps
+code --install-extension ms-azuretools.vscode-bicep
+code --install-extension ms-playwright.playwright
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-python.debugpy
+code --install-extension ms-python.vscode-python-envs
+code --install-extension ms-vscode.powershell
+code --install-extension ms-vscode.remote-repositories
+code --install-extension ms-vscode.azure-repos
+code --install-extension github.remotehub
+code --install-extension tomoki1207.pdf
+```
+
+## 2. Software to Install
 
 ### Core Runtimes
 | Software | Version | Download |
@@ -44,7 +69,7 @@ pip install bcrypt openpyxl paramiko pillow PyMuPDF PyPDF2 python-docx python-pp
 
 ---
 
-## 2. Files to Manually Copy (NOT in any git repo)
+## 3. Files to Manually Copy (NOT in any git repo)
 
 > **These folders have no git remote and MUST be copied manually via USB/cloud drive.**
 
@@ -67,7 +92,7 @@ These are git-ignored. Export from old laptop and import to new:
 
 ---
 
-## 3. Git Configuration
+## 4. Git Configuration
 
 ```bash
 git config --global user.name "Amrendra Dubey"
@@ -76,7 +101,7 @@ git config --global user.email "amrendra.dubey@ynvgroup.com"
 
 ---
 
-## 4. Clone All Repositories
+## 5. Clone All Repositories
 
 ### GitHub (personal - github.com/amar4h)
 ```bash
@@ -99,7 +124,7 @@ git clone https://YNV-Engineering@dev.azure.com/YNV-Engineering/absorb-managemen
 
 ---
 
-## 5. Post-Clone Setup (per project)
+## 6. Post-Clone Setup (per project)
 
 ### Hospital Management
 ```bash
@@ -171,7 +196,7 @@ pnpm dev
 
 ---
 
-## 6. Verify Everything Works
+## 7. Verify Everything Works
 
 After setup, verify each project runs:
 - [ ] Hospital Management - `http://localhost:8000`
